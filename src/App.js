@@ -4,8 +4,6 @@ import Dummy from 'dummyjs';
 
 class Item extends React.Component {
   componentDidMount() {
-    const height = this.props.imageSize.slice(-3);
-    this.setState({height: height + 37});
   }
   render () {
     const {imageSize} = this.props;
@@ -18,17 +16,26 @@ class Item extends React.Component {
   }
 }
 
+class Masonry extends React.Component {
+  componentDidMount() {
+  }
+  render () {
+    return <div className="masonry">{this.props.children}</div>
+  }
+}
+
 class App extends React.Component {
   componentDidMount() {
     import('./mansonry');
+    // console.log(this.props.children);
   }
 
   render () {
     return (
-      <div className="masonry">
-        <Item imageSize="280x400"/>
+      <Masonry>
+        <Item ref imageSize="280x400"/>
         <Item imageSize="280x300"/>
-      </div>
+      </Masonry>
     );
   }
 }

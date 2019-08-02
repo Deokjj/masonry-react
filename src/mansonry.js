@@ -25,12 +25,11 @@ function resizeMasonryItem(item){
    */
   var rowSpan = Math.ceil((item.querySelector('.image').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
 
-
   /* Set the spanning as calculated above (S) */
   item.style.gridRowEnd = 'span '+rowSpan;
 
   /* Make the images take all the available space in the cell/item */
-  item.querySelector('.image').style.height = rowSpan * 10 + "px";
+  // item.querySelector('.image').style.height = rowSpan * 10 + "px";
 }
 
 /**
