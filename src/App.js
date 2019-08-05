@@ -3,12 +3,12 @@ import './App.css';
 import Dummy from 'dummyjs';
 
 class Item extends React.Component {
-  componentDidMount() {
-  }
   render () {
-    const {imageSize} = this.props;
+    const {imageSize,cardHeight} = this.props;
+    const gridRowGap = 10, gridAutoRows = 0;
+    const rowSpan = Math.ceil((parseInt(cardHeight) + gridRowGap) / (gridAutoRows + gridRowGap));
     return (
-    <div className="item"> 
+    <div className="item" style={{'gridRowEnd' : `span ${rowSpan}`}}> 
       <img className="image" src={Dummy.img(imageSize)} alt="masonry item img placeholder"/>
       <p>{Dummy.text(4)}</p>
     </div>
@@ -17,24 +17,25 @@ class Item extends React.Component {
 }
 
 class Masonry extends React.Component {
-  componentDidMount() {
-  }
   render () {
     return <div className="masonry">{this.props.children}</div>
   }
 }
 
 class App extends React.Component {
-  componentDidMount() {
-    import('./mansonry');
-    // console.log(this.props.children);
-  }
 
   render () {
     return (
       <Masonry>
-        <Item ref imageSize="280x400"/>
-        <Item imageSize="280x300"/>
+        <Item ref imageSize="280x400" cardHeight='480'/>
+        <Item imageSize="280x300" cardHeight='380'/>
+        <Item imageSize="280x200" cardHeight='280'/>
+        <Item imageSize="200x100" cardHeight='180'/>
+        <Item imageSize="280x600" cardHeight='680'/>
+        <Item imageSize="280x50" cardHeight='130'/>
+        <Item imageSize="280x300" cardHeight='380'/>
+        <Item imageSize="280x50" cardHeight='130'/>
+        <Item imageSize="280x50" cardHeight='130'/>
       </Masonry>
     );
   }
